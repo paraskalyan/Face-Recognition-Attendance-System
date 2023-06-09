@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 import connect_mongo as db
 from tkcalendar import DateEntry
-
-
+from tkinter import messagebox
+import os, csv
 def show_data(param):
     count = 2
     selected_date = date_entry.get()
@@ -15,21 +15,40 @@ def show_data(param):
         docs = db.fetch_by_id(selected_id) 
     if param == 'both':
         docs = db.fetch_by_IdDate(selected_id, selected_date)
+    
     for doc in docs:
-        tree.insert(parent='', index='end',values=(doc['id'],doc['name'], doc['time']))
+        tree.insert(parent='', index='end',values=(doc['id'],doc['name'], doc['time'], doc['date']))
     for item in tree.get_children():
         if(count%2==0): tree_tag = ('white')
         else: tree_tag = ('black')
         tree.item(item, tags=('Treeitem',tree_tag)) 
         count = count + 1
-
+  
 def clear_treeview(tree):
     item_ids = tree.get_children()
     for item_id in item_ids:
         tree.delete(item_id)
 
+def open_excel():
+    if len(tree.get_children()) == 0:
+        messagebox.showinfo("Info","No data to show")
+    
+    else:
+        csv_file = 'attendance.csv'
+
+        with open(csv_file, 'w', newline='') as file:
+            writer = csv.writer(file)
+
+            columns = ['Id', 'Name', 'Time', 'Date']
+            writer.writerow(columns)
+
+            for item in tree.get_children():
+                values = tree.item(item)['values']
+                writer.writerow(values)
+        os.startfile(csv_file)
+
 root = tk.Tk()
-root.geometry('600x600')
+root.geometry('650x630')
 root.resizable(False, False)
 style = ttk.Style()
 style.theme_use('clam')
@@ -49,28 +68,33 @@ label2.place(x = 90, y= 99)
 entry = ttk.Entry(root, width=17, font=style_font)
 entry.pack(pady=15)
 show_data_btn2 = ttk.Button(root, text="Show by ID", style='Custom.TButton', command=lambda:show_data("byId"), width=16)
-show_data_btn2.place(x = 390, y = 60)
+show_data_btn2.place(x = 410, y = 60)
 
 date_entry = DateEntry(root, width = 15, font=style_font, date_pattern = "dd-mm-yyyy")
 date_entry.pack()
 
 show_data_btn = ttk.Button(root, text="Show by Date", style='Custom.TButton', command=lambda:show_data("byDate"), width=16)
-show_data_btn.place(x = 390, y = 99)
+show_data_btn.place(x = 410, y = 99)
 
 show_data_btn3 = ttk.Button(root, text="Show via both", style='Custom.TButton', command=lambda:show_data("both"), width=16)
 show_data_btn3.pack(pady=10)
 
 tree_style = ttk.Style(root)
 tree_style.configure("Custom.Treeview.Heading", font=('Verdana', 10, 'bold'))
-tree = ttk.Treeview(root, columns=('Id','Name', 'Time'), show='headings', style="Custom.Treeview", height=18)
+tree = ttk.Treeview(root, columns=('Id','Name', 'Time', 'Date'), show='headings', style="Custom.Treeview", height=18)
 tree.heading('Id', text='Id')
 tree.heading('Name', text='Name')
 tree.heading('Time', text='Time')
-tree.column('Id', anchor='center', width=180)
+tree.heading('Date', text='Date')
+tree.column('Id', anchor='center', width=80)
 tree.column('Name', anchor='center', width=180)
 tree.column('Time', anchor='center', width=180)
+tree.column('Date', anchor='center', width=180)
 tree.tag_configure('Treeitem', font=style_font)
 tree.tag_configure('black', background="#808898", foreground="white")
 tree.tag_configure('white', background="white")
-tree.pack(pady=30)
+tree.pack(pady=10)
+
+show_excel_btn = ttk.Button(root,text='Show in Excel',style='Custom.TButton', command=open_excel, width=16)
+show_excel_btn.pack()
 root.mainloop()
