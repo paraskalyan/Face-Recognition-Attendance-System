@@ -8,6 +8,7 @@ from tkinter import ttk
 import connect_mongo as db
 import pyttsx3
 from keras.models import load_model
+import notifications as notify
 
 def capture():
     def take_attendance(pred):
@@ -16,6 +17,10 @@ def capture():
         current_date = date.today().strftime('%d-%m-%Y')
         db.insert_data(emp_dict[pred],pred, current_date, current_time)
         speak(f"Hi {pred} your attendace is saved")
+        contact =db.get_phone(2310)  
+        message = f"Hello {pred}, Your Attendance is saved at {current_time} on {current_date}"
+        notify.send_text_message(contact, message)
+
     def check_key(event):
         if event.keysym == 's': 
             take_attendance(labels[predicted_class])
@@ -40,7 +45,7 @@ def capture():
             predicted_class = np.argmax(predictions)
             confidence = predictions[0][predicted_class] * 100
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-            if confidence > 70: 
+            if confidence > 70:
                 cv2.putText(frame, labels[predicted_class], (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
                 cv2.putText(frame, 'Confidence: {:.2f}%'.format(confidence), (x, y+h+20), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         img2 = Image.fromarray(frame)
@@ -60,7 +65,7 @@ def speak(text):
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # Load the saved model
-model = load_model('unk_vgg_model3.h5')
+model = load_model('unk_vgg_model.h5')
 # Access the webcam
 cap = cv2.VideoCapture(0)
 kernel = np.array([[-1,-1,-1],[-1,9,-1],[-1,-1,-1]])
@@ -89,4 +94,5 @@ photo_label = tk.Label(root, image=photo)
 photo_label.place(x = 10, y = 10)
 
 capture()
+
 root.mainloop()
