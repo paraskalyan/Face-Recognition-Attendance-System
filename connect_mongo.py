@@ -27,3 +27,10 @@ def fetch_by_IdDate(id, date):
     cursor = collection.find({'id':id, 'date':date})
     return cursor
 
+def get_phone(id):
+    id = int(id)
+    collection = db['emp']
+    cursor = collection.find({'emp_id':id})
+    doc = list(cursor)
+    return f"+91{doc[0]['contact']}"
+ 
