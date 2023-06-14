@@ -35,9 +35,6 @@ Inspected the company's website thoroughly to identify areas for improvement. As
 - Set up the Jetson Nano by following the official documentation and guides provided by NVIDIA.
 - Explored the Jetson Nano's AI capabilities, including its support for deep learning frameworks like TensorFlow, PyTorch, and Caffe.
 - Studied the process of deploying and running AI models on the Jetson Nano, leveraging its GPU acceleration for improved performance.
-- Experimented with pre-trained models and sample projects provided by NVIDIA to understand the workflow of deploying AI applications on the Jetson Nano.
-- Explored the Jetson Nano's connectivity options, such as USB, Ethernet, and Wi-Fi, and their configuration settings.
-- Learned about additional hardware components and peripherals that can be connected to the Jetson Nano, such as cameras, sensors, and displays.
 
 Week 6
 - Started the journey of learning machine learning concepts.
@@ -46,11 +43,7 @@ Week 6
 - Studied the concepts of training, validation, and testing datasets, as well as techniques for splitting data.
 - Learned about feature engineering and transformation techniques to prepare data for machine learning models.
 - Gained an understanding of model evaluation methods, such as accuracy, precision, recall, and F1 score.
-- Implemented basic machine learning algorithms using popular libraries like scikit-learn in Python.
-- Practiced feature selection, dimensionality reduction, and model hyperparameter tuning to improve model performance.
-- Explored techniques for handling imbalanced datasets, such as oversampling and undersampling.
-- Worked on small projects and exercises to apply the learned concepts and gain hands-on experience.
-- Explored resources like books, online courses, and tutorials to supplement the learning process.
+
 
 Week 7:
 - Focused on supervised learning techniques in machine learning.
@@ -59,11 +52,6 @@ Week 7:
 - Explored ensemble methods like bagging and boosting for improving model performance.
 - Studied techniques for model evaluation, including cross-validation, ROC curves, and precision-recall curves.
 - Implemented supervised learning algorithms using appropriate libraries and frameworks.
-- Explored different evaluation strategies for classification and regression problems.
-- Worked on real-world datasets to apply supervised learning algorithms and analyze the results.
-- Discussed and shared insights with peers or mentors to gain different perspectives on supervised learning techniques.
-- Continued to enhance knowledge through reading research papers and articles related to supervised learning algorithms.
-- Prepared for future projects where supervised learning techniques could be applied effectively.
 
 Week 8:
 - Dived into the realm of neural networks in machine learning.
@@ -73,11 +61,6 @@ Week 8:
 - Explored different architectures, including single-layer perceptrons and multilayer perceptrons (MLPs).
 - Implemented basic neural networks using libraries like TensorFlow or PyTorch.
 - Explored techniques for handling overfitting and improving generalization performance.
-- Learned about regularization techniques such as L1 and L2 regularization, dropout, and early stopping.
-- Explored the concept of hyperparameter tuning and techniques like grid search and random search.
-- Practiced training neural networks on various datasets to gain hands-on experience.
-- Engaged in discussions and knowledge-sharing sessions with colleagues or mentors to deepen understanding.
-- Continued learning from research papers, articles, and online resources to stay updated with the latest developments in neural networks.
 
 Week 9:
 - Focused specifically on convolutional neural networks (CNNs) and their applications in image analysis tasks.
@@ -86,12 +69,7 @@ Week 9:
 - Studied different CNN architectures, such as LeNet, AlexNet, VGG, and ResNet.
 - Learned about pre-trained CNN models and how to leverage transfer learning for image-related tasks.
 - Explored image preprocessing techniques, including data augmentation and normalization.
-- Worked with image datasets and prepared them for training CNN models.
-- Implemented CNN models using popular deep learning frameworks like TensorFlow or PyTorch.
-- Conducted experiments with CNN models, analyzing their performance on various image classification tasks.
-- Explored visualization techniques to understand and interpret the inner workings of CNNs.
-- Kept up with the latest research and advancements in CNNs and image analysis to stay abreast of cutting-edge techniques.
-- Prepared to apply CNNs and image analysis techniques to future projects involving working with images and visual data.
+
 
 Week 10:
 - Started working on the face recognition attendance system project.
