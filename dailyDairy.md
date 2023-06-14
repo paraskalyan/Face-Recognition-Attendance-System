@@ -121,4 +121,3 @@ Week 17:
 - Received feedback and suggestions for further improvements.
 - Wrapped up the project, ensuring all code and documentation were properly organized and archived.
 
-Please note that the specific tasks and activities may vary based on the project's requirements and your implementation approach.
